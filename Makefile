@@ -23,19 +23,18 @@ BONUS_SRCS =
 OBJS = ${SRCS:.c=.o}
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-
 CC					= gcc
 RM					= rm -f
 CFLAGS				= -Wall -Wextra -Werror
+LDFLAGS = -lreadline
 
 all: $(NAME) 
 
 bonus: $(BONUS_OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIB)  -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIB) -o $(NAME) $(LDFLAGS)
 
-
-$(NAME):	$(OBJS) $(LIB)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB)
+$(NAME): $(OBJS) $(LIB)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIB) $(LDFLAGS)
 
 $(LIB):
 			@make -C ./lib/ft_printf

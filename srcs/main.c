@@ -11,3 +11,25 @@
 /* ************************************************************************** */
 
 #include "./../header/minishell.h"
+
+// void	realese_inputs()
+// {
+
+// }
+
+int main()
+{
+	char *input;
+
+	while ((input = readline("MINISHELL>>: ")) != NULL)
+	{
+		if (strlen(input) > 0)
+		{
+			add_history(input);
+		}
+		printf("You entered: %s\n", input);
+		free(input);
+	}
+
+	return 0;
+}
